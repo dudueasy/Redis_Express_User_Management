@@ -1,10 +1,12 @@
 <h1>Search users</h1>
-<div class='form-group'>
-  <form class='form-inline' method='POST' action='/user/search'>
-    <input type='text' name='id' class='form-control' placeholder='Search Users'> 
-    <input type='submit' class='btn btn-primary' value='search'>
-  </form>
-</div> 
+<div class="form-area">
+  <div class='form-group'>
+    <form class='form-inline' method='POST' action='/user/search'>
+      <input type='text' name='id' class='form-control' placeholder='Search Users'> 
+      <input type='submit' class='btn btn-primary' value='search'>
+    </form>
+  </div> 
+</div>
 
 {{#if error}} 
   <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
