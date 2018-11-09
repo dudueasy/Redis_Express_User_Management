@@ -48,9 +48,8 @@ redisClient.on("error", function (err) {
 
 app.use('*', requestInfoTeller) 
 // override req.method with request's header X-HTTP-Method-Override 
-app.use(methodOverride('X-HTTP-Method-Override'))
-app.use(methodOverride('_method',{methods:['GET','PUT']}))
-
+// app.use(methodOverride('X-HTTP-Method-Override'))
+app.use(methodOverride('_method',{methods:['POST','PUT']}))
 app.use('*',requestInfoTeller)
 
 /////////////
@@ -96,9 +95,48 @@ app.get('/user/add', function (req, res) {
 });
 
 app.post('/user/add', function (req, res) {
-  res.render('home');
+  // take data from req.body
+
+  // {{user.email}}{{user.phone}}{{user.first_name}}{{user.last_name}}{{user.id}} 
+  try{
+    const {id,email, phone, first_name, last_name} = req.body
+    redisClient.hmset(id,
+      'first_name',first_name,
+      'last_name',last_name,
+      'email',email,
+      'phone', phone
+      , (err, reply)=>{
+        if(err) {
+          console.log(err)
+          res.render('add_user', {error:err})
+        } else{
+          console.log('reply',reply) 
+          res.redirect('/') } 
+      }) 
+  }
+  catch(err){
+    console.log(err)
+    res.render('add_user', {error:err}) 
+  }
 });
 
+
+app.delete('/user/delete/:userId',(req, res)=>{
+  const { userId } = req.params
+  console.log('userId:',userId)
+  try{
+    redisClient.del(userId, (error, result)=>{
+      if(result){
+        console.log('user is deleted')
+      } 
+      res.redirect('/')
+    })
+  }
+  catch(error){
+    console.log('something wrong') 
+    res.redirect('/')
+  } 
+})
 
 app.listen(PORT, ()=>{
   console.log(`server is running on ${PORT}`)

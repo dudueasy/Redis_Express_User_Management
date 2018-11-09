@@ -25,3 +25,11 @@ body{
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.user-details .button-area{
+  display: flex; 
+  justify-content: space-between;
+}
+
+
+

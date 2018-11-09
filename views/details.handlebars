@@ -1,11 +1,20 @@
-<h1> Gotcha! </h1>
-<h4 class="card-title">User info:</h4>
-<ul class="list-group">
-  <li class='list-group-item user-info-list'><span>Email: </span>{{user.email}}</li>
-  <li class='list-group-item user-info-list'><span>Phone: </span>{{user.phone}}</li>
-  <li class='list-group-item user-info-list'><span>First Name: </span>{{user.first_name}}</li>
-  <li class='list-group-item user-info-list'><span>Last Name: </span>{{user.last_name}}</li>
-  <li class='list-group-item user-info-list'><span>User Id: </span>{{user.id}}</li> 
-</ul>
-<a class="btn  btn btn-primary btn-lg" href="/user/search">Back</a>
-<a class="btn  btn btn-primary btn-lg" href="/">Home</a>
+<div class="user-details">
+  <h1> Gotcha! </h1>
+  <h4 class="card-title">User info:</h4>
+  <ul class="list-group">
+    <li class='list-group-item user-info-list'><span>Email: </span>{{user.email}}</li>
+    <li class='list-group-item user-info-list'><span>Phone: </span>{{user.phone}}</li>
+    <li class='list-group-item user-info-list'><span>First Name: </span>{{user.first_name}}</li>
+    <li class='list-group-item user-info-list'><span>Last Name: </span>{{user.last_name}}</li>
+    <li class='list-group-item user-info-list'><span>User Id: </span>{{user.id}}</li> 
+  </ul>
+  <div class="button-area">
+    <div class="buttons">
+      <a class="btn  btn btn-primary btn-lg" href="/user/search">Back</a>
+      <a class="btn  btn btn-primary btn-lg" href="/">Home</a> 
+    </div>
+    <form method="POST" action="/user/delete/{{user.id}}?_method=DELETE">
+      <input class="btn delete btn-danger btn-lg" type='submit' value='delete'>
+    </form>
+  </div>
+</div>
