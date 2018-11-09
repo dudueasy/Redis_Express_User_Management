@@ -10,7 +10,13 @@
   </ul>
   <div class="button-area">
     <div class="buttons">
-      <a class="btn  btn btn-primary btn-lg" href="/user/search">Back</a>
+
+    {{#if previous_link}} 
+      <a class="btn  btn btn-primary btn-lg" href="{{previous_link}}">Back</a>
+    {{else}} 
+      <a class="btn  btn btn-primary btn-lg" href="/">Back</a>
+    {{/if}}
+
       <a class="btn  btn btn-primary btn-lg" href="/">Home</a> 
     </div>
     <form method="POST" action="/user/delete/{{user.id}}?_method=DELETE">

@@ -84,6 +84,7 @@ app.post('/user/search', (req, res, next)=>{
     }else{
       obj.id = id
       res.render('details',{
+        previous_link:'/user/search',
         user: obj
       }) 
     }
@@ -100,6 +101,7 @@ app.post('/user/add', function (req, res) {
   // {{user.email}}{{user.phone}}{{user.first_name}}{{user.last_name}}{{user.id}} 
   try{
     const {id,email, phone, first_name, last_name} = req.body
+
     redisClient.hmset(id,
       'first_name',first_name,
       'last_name',last_name,
@@ -108,15 +110,21 @@ app.post('/user/add', function (req, res) {
       , (err, reply)=>{
         if(err) {
           console.log(err)
-          res.render('add_user', {error:err})
+          res.render('add_user', {error:err.message})
         } else{
           console.log('reply',reply) 
-          res.redirect('/') } 
-      }) 
+          const obj = {id,email, phone, first_name, last_name} 
+          res.render(
+            'details',{
+              previous_link:'/user/add',
+              user: obj
+            }) 
+        } 
+      })
   }
   catch(err){
     console.log(err)
-    res.render('add_user', {error:err}) 
+    res.render('add_user', {error:err.message}) 
   }
 });
 
@@ -129,7 +137,7 @@ app.delete('/user/delete/:userId',(req, res)=>{
       if(result){
         console.log('user is deleted')
       } 
-      res.redirect('/')
+      res.redirect('/user/search')
     })
   }
   catch(error){
