@@ -5,12 +5,12 @@
     <link rel="stylesheet" href="/bootstrap.css">
     <link rel="stylesheet" href="/style.css">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    
+
     <title>Express Redis User Management</title>
   </head>
   <body> 
     <!-- header starts here -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
       <a class="navbar-brand" href="/">Node & Redis User Management</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,6 +22,9 @@
             <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/user/search">Search User<span class="sr-only">(current)</span></a>
+          </li> 
+          <li class="nav-item">
             <a class="nav-link" href="/user/add">Add User<span class="sr-only">(current)</span></a>
           </li> 
         </ul>
@@ -31,15 +34,6 @@
 
     <!-- content starts here -->
     <div class="container">
-<div class="jumbotron">
-  <h1 class="display-3">Hello, Friend!</h1>
-  <p class="lead">This is a simple user management application built with Express & Redis</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="" role="button">Learn more</a>
-  </p>
-</div>
       {{{body}}}
     </div>
 

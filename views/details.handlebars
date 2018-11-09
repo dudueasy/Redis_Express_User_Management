@@ -1,6 +1,11 @@
-<h1>Welcome Back {{user.first_name}} {{user.last_name}} {{user.id}} </h1>
+<h1> Gotcha! </h1>
+<h4 class="card-title">User info:</h4>
 <ul class="list-group">
-  <li><strong>Email: </strong>{{user.email}}</li>
-  <li><strong>Phone: </strong>{{user.phone}}</li>
+  <li class='list-group-item user-info-list'><span>Email: </span>{{user.email}}</li>
+  <li class='list-group-item user-info-list'><span>Phone: </span>{{user.phone}}</li>
+  <li class='list-group-item user-info-list'><span>First Name: </span>{{user.first_name}}</li>
+  <li class='list-group-item user-info-list'><span>Last Name: </span>{{user.last_name}}</li>
+  <li class='list-group-item user-info-list'><span>User Id: </span>{{user.id}}</li> 
 </ul>
-<a class="btn btn-default" href="/">Back</a>
+<a class="btn  btn btn-primary btn-lg" href="/user/search">Back</a>
+<a class="btn  btn btn-primary btn-lg" href="/">Home</a>

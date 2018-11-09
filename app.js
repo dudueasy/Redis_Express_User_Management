@@ -65,6 +65,11 @@ app.use('*',requestInfoTeller)
 // process request
 
 app.get('/', function (req, res) {
+  res.render('home');
+});
+
+
+app.get('/user/search', function (req, res) {
   res.render('searchusers');
 });
 
@@ -83,9 +88,16 @@ app.post('/user/search', (req, res, next)=>{
         user: obj
       }) 
     }
-  })
-
+  }) 
 })
+
+app.get('/user/add', function (req, res) {
+  res.render('add_user');
+});
+
+app.post('/user/add', function (req, res) {
+  res.render('home');
+});
 
 
 app.listen(PORT, ()=>{

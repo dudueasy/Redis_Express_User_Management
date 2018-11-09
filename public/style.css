@@ -1,7 +1,26 @@
-.container{
-  padding-top:20px;
-  padding-bottom:20px;
+body{
+  padding-top:120px
+
 }
+.home{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center
+}
+.search_user{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center 
+}
+
+.user-info-list{
+  display: flex;
+  flex-direction:row;
+  /* justify-content:space-between;  */
+}
+
 .form-area{
   margin-top: 20px;
   margin-bottom: 20px;
